@@ -5,6 +5,9 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY . /code
 
+# patch openai.py from langchain_community to fix UnprocessableEntityError
+RUN sed -i "0,/input=tokens\[i \: i + _chunk_size\],/{s//input=texts\[0\],/}" /usr/local/lib/python3.11/site-packages/langchain_community/embeddings/openai.py
+
 EXPOSE 80
 ENV FORWARDED_ALLOW_IPS *
 
