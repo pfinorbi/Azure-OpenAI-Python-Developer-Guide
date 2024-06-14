@@ -7,7 +7,6 @@ import os
 import json
 from typing import List
 import pymongo
-from dotenv import load_dotenv
 from langchain.chat_models import AzureChatOpenAI
 from langchain.embeddings import AzureOpenAIEmbeddings
 from langchain.vectorstores.azure_cosmos_db import AzureCosmosDBVectorSearch
@@ -17,7 +16,6 @@ from langchain.agents.agent_toolkits import create_conversational_retrieval_agen
 from langchain.tools import StructuredTool
 from langchain_core.messages import SystemMessage
 
-load_dotenv(".env")
 DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
 AOAI_ENDPOINT = os.environ.get("AOAI_ENDPOINT")
 AOAI_KEY = os.environ.get("AOAI_KEY")
